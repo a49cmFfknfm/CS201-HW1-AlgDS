@@ -1,0 +1,14 @@
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.GeneratedMSBuildEditorConfig.editorconfig
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.AssemblyInfoInputs.cache
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.AssemblyInfo.cs
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.csproj.CoreCompileInputs.cache
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/bin/Debug/net10.0/AlgSD-HW1
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/bin/Debug/net10.0/AlgSD-HW1.deps.json
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/bin/Debug/net10.0/AlgSD-HW1.runtimeconfig.json
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/bin/Debug/net10.0/AlgSD-HW1.dll
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/bin/Debug/net10.0/AlgSD-HW1.pdb
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.dll
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/refint/AlgSD-HW1.dll
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.pdb
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.genruntimeconfig.cache
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/ref/AlgSD-HW1.dll

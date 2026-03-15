@@ -12,3 +12,4 @@
 /home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.pdb
 /home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.genruntimeconfig.cache
 /home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/ref/AlgSD-HW1.dll
+/home/h1hs/RiderProjects/AlgSD-HW1/AlgSD-HW1/obj/Debug/net10.0/AlgSD-HW1.sourcelink.json

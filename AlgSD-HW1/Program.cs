@@ -1,5 +1,8 @@
 ﻿using AlgSD_HW1;
 
+double Pi = 3.1415926535897932;
+// Console.WriteLine(Sin(485));
+// Console.WriteLine(Cos(485));
 while (true)
 {
     Tokenizer t = new Tokenizer();
@@ -27,6 +30,65 @@ while (true)
 
 }
 
+static double Cos(double x)
+{
+    double Radians = x * Math.PI / 180.0;
+    Radians = Radians % (2 * Math.PI);
+    double final = 1;
+    int sign = -1;
+    for (int i = 1; i < 10; i++)
+    {
+        int power = 2 * i;
+        final += sign * (Power(Radians, power) / Fact(power));
+        sign *= -1;
+    }
+    
+    return final;
+}
+
+static double Sin(double x)
+{
+    double Radians = x * Math.PI / 180.0;
+    Radians = Radians % (2 * Math.PI);
+    double final = 0;
+    int sign = 1;
+    for (int i = 0; i < 10; i++)
+    {
+        int power = 2 * i + 1;
+        final += sign * (Power(Radians, power) / Fact(power));
+        sign *= -1;
+    }
+    
+    return final;
+}
+
+static double Fact(int x)
+{
+    double nueva = 1;
+    for (int i = 2; i <= x; i++)
+    {
+        nueva *= i;
+    }
+
+    return nueva;
+}
+
+static double Power(double number, double power) //3^4
+{
+    double nueva = number;
+    if (power == 1){return number;}
+    
+    if (power % 1 == 0)
+    {
+        for (int i = 1; i < power; i++)
+        {
+            // Console.WriteLine($"S {i} {nueva}");
+            nueva = nueva * number;
+        }
+    }
+    return nueva;
+}
+
 static TList RPN(TList data)
 {
     string SOpers = "+-*/^";
@@ -38,6 +100,9 @@ static TList RPN(TList data)
         if (Char.IsDigit(c[0]))
         {
             f.Add(c);
+        } else if (c == "sin" || c == "cos") 
+        {
+            stack.Push(c);
         } else if(c == "("){
             stack.Push(c);
         } else if (c == ")")
@@ -46,8 +111,11 @@ static TList RPN(TList data)
             {
                 f.Add(stack.Pop());
             }
-
             stack.Pop();
+            if (!stack.IsEmpty() && (stack.Peek() == "sin" || stack.Peek() == "cos"))
+            {
+                f.Add(stack.Pop());
+            }
         } else if (SOpers.Contains(c))
         {
             while (!stack.IsEmpty() && GetPriority(stack.Peek()) >= GetPriority(c))
@@ -83,8 +151,16 @@ static double calcFinal(TList data)
         if (Char.IsDigit(c[0]))
         {
             stack.Push(double.Parse(c));
-        } else if (opers.Contains(c))
-        {
+        }else if (c == "sin" || c == "cos") {
+            double right = stack.Pop();
+            double nueva = 0;
+            switch (c)
+            {
+                case "cos": nueva = Cos(right); break;
+                case "sin": nueva = Sin(right); break;
+            }
+            stack.Push(nueva);
+        } else if (opers.Contains(c)) {
             double right = stack.Pop();
             double left = stack.Pop();
             double nueva = 0;

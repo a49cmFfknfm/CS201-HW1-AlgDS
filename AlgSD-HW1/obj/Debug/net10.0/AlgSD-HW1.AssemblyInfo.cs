@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AlgSD-HW1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6169ce437b4124ebf1758619bd4578745c46952")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ec71a01913a121cb4a9dd6a93783b132938545c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlgSD-HW1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlgSD-HW1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

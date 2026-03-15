@@ -16,9 +16,7 @@ public class СStack
         {
             Resize();
         }
-        
-        var n = _top + 1;
-        _items[n] = val;
+        _items[++_top] = val;
     }
 
     public double Pop()

@@ -34,12 +34,12 @@ public class TStack
     
     private void Resize()
     {
-        string[] newArray = new string[_items.Length*2];
+        string[] nueva = new string[_items.Length*2];
         for (int i = 0; i <= _top; i++)
         {
-            newArray[i] = _items[i];
+            nueva[i] = _items[i];
         }
-        _items = newArray;
+        _items = nueva;
     }
     
     public bool IsEmpty() => _top == -1;

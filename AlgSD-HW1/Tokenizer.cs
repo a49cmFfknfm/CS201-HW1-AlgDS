@@ -6,7 +6,7 @@ public class Tokenizer
     public TList Tokenize(string data)
     {
         TList tokens = new TList();
-        string opers = "+-*/()^";
+        string opers = "+-*/()^,";
         string buff = "";
         string wBuff = "";
         char prev = '\0';
@@ -14,7 +14,7 @@ public class Tokenizer
         foreach (char x in data)
         {
             if (x == ' ') continue;
-            if (char.IsDigit(x) || x == '.' || x == ',')
+            if (char.IsDigit(x) || x == '.')
             {
                 if (prev == ')') 
                 {
@@ -53,7 +53,6 @@ public class Tokenizer
         {
             tokens.Add(buff);
         }
-        if (!String.IsNullOrWhiteSpace(buff)) tokens.Add(buff);
         if (!String.IsNullOrWhiteSpace(wBuff)) tokens.Add(wBuff);
         return tokens;
     }

@@ -100,9 +100,15 @@ static TList RPN(TList data)
         if (Char.IsDigit(c[0]))
         {
             f.Add(c);
-        } else if (c == "sin" || c == "cos") 
+        } else if (c == "sin" || c == "cos" || c == "max")
         {
             stack.Push(c);
+        } else if (c == ",")
+        {
+            while (stack.Peek() != "(")
+            {
+                f.Add(stack.Pop());
+            }
         } else if(c == "("){
             stack.Push(c);
         } else if (c == ")")
@@ -112,7 +118,7 @@ static TList RPN(TList data)
                 f.Add(stack.Pop());
             }
             stack.Pop();
-            if (!stack.IsEmpty() && (stack.Peek() == "sin" || stack.Peek() == "cos"))
+            if (!stack.IsEmpty() && (stack.Peek() == "sin" || stack.Peek() == "cos" || stack.Peek() == "max"))
             {
                 f.Add(stack.Pop());
             }
@@ -151,15 +157,24 @@ static double calcFinal(TList data)
         if (Char.IsDigit(c[0]))
         {
             stack.Push(double.Parse(c));
-        }else if (c == "sin" || c == "cos") {
-            double right = stack.Pop();
-            double nueva = 0;
-            switch (c)
+        }else if (c == "sin" || c == "cos" || c == "max") {
+            if (c == "max")
             {
-                case "cos": nueva = Cos(right); break;
-                case "sin": nueva = Sin(right); break;
+                double b = stack.Pop();
+                double a = stack.Pop();
+                stack.Push(a > b ? a : b);
             }
-            stack.Push(nueva);
+            else
+            {
+                double right = stack.Pop();
+                double nueva = 0;
+                switch (c)
+                {
+                    case "cos": nueva = Cos(right); break;
+                    case "sin": nueva = Sin(right); break;
+                }
+                stack.Push(nueva);
+            }
         } else if (opers.Contains(c)) {
             double right = stack.Pop();
             double left = stack.Pop();

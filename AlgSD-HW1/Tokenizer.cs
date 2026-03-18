@@ -10,13 +10,27 @@ public class Tokenizer
         string buff = "";
         string wBuff = "";
         char prev = '\0';
-        
+
         foreach (char x in data)
         {
             if (x == ' ') continue;
+
+            // Unary minus: treat as part of number
+            if (x == '-' && (prev == '\0' || prev == '(' || "+-*/^,".Contains(prev)))
+            {
+                if (!String.IsNullOrWhiteSpace(buff))
+                {
+                    tokens.Add(buff);
+                    buff = "";
+                }
+                buff += x;
+                prev = x;
+                continue;
+            }
+
             if (char.IsDigit(x) || x == '.')
             {
-                if (prev == ')') 
+                if (prev == ')')
                 {
                     tokens.Add("*");
                 }
@@ -48,7 +62,7 @@ public class Tokenizer
 
 
         }
-        
+
         if (!String.IsNullOrWhiteSpace(buff))
         {
             tokens.Add(buff);

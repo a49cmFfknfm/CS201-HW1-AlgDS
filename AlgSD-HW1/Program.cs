@@ -12,12 +12,23 @@ while (true)
     {
         case ("1"):
             string problem = Console.ReadLine();
-            var tk = t.Tokenize(problem);
-            tk.Print();
-            var rpn = RPN(tk);
-            rpn.Print();
-            double result = calcFinal(rpn);
-            Console.WriteLine($"Result: {result}");
+            try
+            {
+                var tk = t.Tokenize(problem);
+                tk.Print();
+                var rpn = RPN(tk);
+                rpn.Print();
+                double result = calcFinal(rpn);
+                Console.WriteLine($"\nResult: {result}");
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Division by zero!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
             break;
         case ("2"):
             Console.WriteLine("Shutting down the progam...");
@@ -97,7 +108,7 @@ static TList RPN(TList data)
     for (int i = 0; i < data.Length(); i++)
     {
         string c = data.Get(i);
-        if (Char.IsDigit(c[0]))
+        if (Char.IsDigit(c[0]) || (c.Length > 1 && c[0] == '-' && Char.IsDigit(c[1])))
         {
             f.Add(c);
         } else if (c == "sin" || c == "cos" || c == "max")
@@ -124,7 +135,7 @@ static TList RPN(TList data)
             }
         } else if (SOpers.Contains(c))
         {
-            while (!stack.IsEmpty() && GetPriority(stack.Peek()) >= GetPriority(c))
+            while (!stack.IsEmpty() && (c != "^" ? GetPriority(stack.Peek()) >= GetPriority(c) : GetPriority(stack.Peek()) > GetPriority(c)))
             {
                 f.Add(stack.Pop());
             }
@@ -154,7 +165,7 @@ static double calcFinal(TList data)
     for (int i = 0; i < data.Length(); i++)
     {
         string c = data.Get(i);
-        if (Char.IsDigit(c[0]))
+        if (Char.IsDigit(c[0]) || (c.Length > 1 && c[0] == '-' && Char.IsDigit(c[1])))
         {
             stack.Push(double.Parse(c));
         }else if (c == "sin" || c == "cos" || c == "max") {
@@ -183,7 +194,9 @@ static double calcFinal(TList data)
                 case "+": nueva = left + right; break;
                 case "-": nueva = left - right; break;
                 case "*": nueva = left * right; break;
-                case "/": nueva = left / right; break;
+                case "/":
+                    if (right == 0) throw new DivideByZeroException("Division by zero!");
+                    nueva = left / right; break;
                 case "^": nueva = Math.Pow(left, right); break;
             }
             stack.Push(nueva);
